@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cliome – Premium Music, Real Rewards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #ADFF2F;
+      --dark: #151816;
+      --glass: rgba(40, 50, 40, 0.78);
+      --box-radius: 20px;
+      --font-head: "Montserrat", Arial, sans-serif;
+      --font-body: "DM Sans", Arial, sans-serif;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #151816 50%, #1e2619 100%);
+      font-family: var(--font-body);
+      color: #f7fff6;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 870px;
+      background: var(--glass);
+      margin: 40px auto;
+      padding: 40px 30px;
+      border-radius: var(--box-radius);
+      box-shadow: 0 8px 40px #adff2f33;
+      text-align: center;
+      position: relative;
+    }
+    .hero-logo {
+      width: 92px;
+      height: 92px;
+      background: #fff;
+      border-radius: 24px;
+      margin: 0 auto 14px auto;
+      box-shadow: 0 7px 24px #adff2f11;
+      display: block;
+      object-fit: contain;
+    }
+    .tagline {
+      color: var(--green);
+      font-weight: 600;
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      letter-spacing: 0.07em;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 18px 0;
+      line-height: 1.1;
+    }
+    .hero-desc {
+      font-size: 1.12rem;
+      font-weight: 500;
+      color: #eaffea;
+      margin-bottom: 30px;
+      line-height: 1.4;
+    }
+    .email-count {
+      font-size: 1.13rem;
+      color: var(--green);
+      margin-bottom: 30px;
+    }
+    .app-preview {
+      border-radius: 26px;
+      width: 270px;
+      margin: 0 auto 26px auto;
+      box-shadow: 0 6px 36px #adff2f33, 0 2px 12px #111a;
+      border: 2px solid #166116;
+      display: block;
+      filter: drop-shadow(0 0 11px #adff2f25);
+      background: #fff;
+      animation: previewFloat 3.5s ease-in-out infinite alternate;
+    }
+    @keyframes previewFloat {
+      0% {transform: translateY(0);}
+      100% {transform: translateY(-17px);}
+    }
+    form {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: nowrap;
+      max-width: 430px;
+      margin: 0 auto 20px auto;
+    }
+    input[type="email"] {
+      flex-grow: 1;
+      padding: 14px 18px;
+      border-radius: 25px;
+      border: 2px solid var(--green);
+      font-size: 1.1rem;
+      background: #222;
+      color: #fff;
+      font-family: var(--font-head);
+      font-weight: 600;
+      outline: none;
+      min-width: 0;
+      transition: border-color 0.3s;
+    }
+    input[type="email"]:focus {
+      border-color: #f0fff0;
+    }
+    input::placeholder {
+      color: #a6ed70cc;
+    }
+    button {
+      background: linear-gradient(99deg, #adff2f 60%, #a9fa2b 100%);
+      border: none;
+      padding: 14px 34px;
+      border-radius: 25px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #181818;
+      cursor: pointer;
+      font-family: var(--font-head);
+      box-shadow: 0 6px 18px #adff2f88;
+      transition: background 0.3s ease, transform 0.15s ease;
+      min-width: 130px;
+      user-select: none;
+    }
+    button:hover, button:focus {
+      background: linear-gradient(99deg, #bbff3f 70%, #c3ff4e 100%);
+      outline: none;
+      transform: scale(1.08);
+    }
+    .privacy {
+      font-size: 1.05rem;
+      color: #e6ffd1;
+      opacity: 0.9;
+      font-family: var(--font-body);
+      margin-top: 10px;
+    }
+    .thank-you-banner {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: #151816;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 14px 24px;
+      border-radius: 30px;
+      box-shadow: 0 6px 20px rgba(173,255,47,0.8);
+      display: none;
+      z-index: 1000;
+      user-select: none;
+      pointer-events: none;
+    }
+    .features {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+    .feature-box {
+      background: linear-gradient(120deg, #192819 30%, #232823 100%);
+      border-radius: 20px;
+      padding: 24px 18px;
+      max-width: 220px;
+      box-shadow: 0 4px 18px #16291929;
+      color: #eaffea;
+      font-family: var(--font-body);
+    }
+    .feature-box-title {
+      font-family: var(--font-head);
+      font-size: 1.11rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .feature-box p {
+      margin: 0;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .brands {
+      margin-top: 42px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .brands img {
+      height: 32px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 4px 8px;
+      box-shadow: 0 4px 15px #adff2f2e;
+      object-fit: contain;
+    }
+    .contact {
+      margin-top: 42px;
+      background: var(--glass);
+      border-radius: 16px;
+      padding: 18px 24px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      font-family: var(--font-head);
+      font-weight: 600;
+    }
+    .contact a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact a:hover {
+      color: var(--green);
+      text-decoration: underline;
+    }
+    .contact img {
+      height: 22px;
+      width: 22px;
+      border-radius: 3px;
+      vertical-align: middle;
+      display: block;
+    }
+    @media (max-width: 800px) {
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+      .feature-box {
+        max-width: 90vw;
+      }
+      form {
+        flex-direction: column;
+        gap: 12px;
+      }
+      button {
+        width: 100%;
+        max-width: 100%;
+      }
+      input[type="email"] {
+        width: 100%;
+        max-width: 100%;
+      }
+      .contact {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .brands {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="thank-you-banner" id="thankYouBanner">Thank you for signing up! You’ll get early access soon.</div>
+
+  <div class="container">
+    <img src="https://i.postimg.cc/ryxGt5xz/logo-png.png" alt="Cliome Logo" class="hero-logo" />
+
+    <div class="tagline">The Future of Music, Rewarded</div>
+
+    <h1 class="hero-title">PLAY MUSIC.<br />Earn Real Rewards.</h1>
+
+    <p class="hero-desc">
+      Welcome to Cliome—a premium music streaming startup where your listening time is valued. Skip ads freely. Get exclusive brand rewards. Help create the next big thing in music!
+    </p>
+
+    <img src="https://i.postimg.cc/v8JPJQLx/Screenshot-2025-08-11-114332-jpg.png" alt="Cliome App Preview" class="app-preview" />
+
+    <div class="email-count">250+ music lovers have already joined!</div>
+
+    <form name="early-access" method="POST" data-netlify="true" autocomplete="on" id="signupForm">
+      <input type="hidden" name="form-name" value="early-access" />
+      <input type="email" name="email" placeholder="Your email for invite" required autocomplete="email" aria-label="Email Address" />
+      <button type="submit" aria-label="Sign Up for Early Access">Sign Up</button>
+    </form>
+
+    <div class="privacy">
+      250+ music lovers have already joined. You'll get a personal invite before anyone else.<br />
+      No spam. Privacy respected.
+    </div>
+
+    <div class="features">
+      <div class="feature-box">
+        <div class="feature-box-title">Unlimited Music</div>
+        <p>Millions of tracks and playlists, always at your fingertips.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-box-title">Real Brand Rewards</div>
+        <p>Receive coupons and special deals with every listening session.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-box-title">Ads on Your Terms</div>
+        <p>No forced ads. Watch up to 5 ads every 24 hours to earn real coupons and rewards. Your music, your control.</p>
+      </div>
+    </div>
+
+    <div class="brands">
+      <img src="https://i.postimg.cc/Pxc6rHgc/starbucks-png.png" alt="Starbucks" />
+      <img src="https://i.postimg.cc/K8ytGwCz/myntra-png.png" alt="Myntra" />
+      <img src="https://i.postimg.cc/DZDbtMq7/pizzahut-png.jpg" alt="Pizza Hut" />
+      <img src="https://i.postimg.cc/76PVxdG7/zara-png.png" alt="Zara" />
+    </div>
+
+    <div class="contact">
+      <a href="mailto:cliomusic@gmail.com" aria-label="Email cliomusic">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
+        cliomusic@gmail.com
+      </a>
+      <a href="https://instagram.com/cliomemusic" target="_blank" rel="noopener" aria-label="Instagram @cliomemusic">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
+        @cliomemusic
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('signupForm');
+    const thankYouBanner = document.getElementById('thankYouBanner');
+
+    form.addEventListener('submit', function(event) {
+      setTimeout(() => {
+        thankYouBanner.style.display = 'block';
+        setTimeout(() => {
+          thankYouBanner.style.display = 'none';
+        }, 4000);
+        form.reset();
+      }, 200);
+    });
+  </script>
+</body>
+</html>
