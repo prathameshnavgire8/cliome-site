@@ -66,11 +66,6 @@
       margin-bottom: 30px;
       line-height: 1.4;
     }
-    .email-count {
-      font-size: 1.13rem;
-      color: var(--green);
-      margin-bottom: 30px;
-    }
     .app-preview {
       border-radius: 26px;
       width: 270px;
@@ -86,53 +81,13 @@
       0% {transform: translateY(0);}
       100% {transform: translateY(-17px);}
     }
-    form {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: nowrap;
+    .email-embed-container {
       max-width: 430px;
       margin: 0 auto 20px auto;
-    }
-    input[type="email"] {
-      flex-grow: 1;
-      padding: 14px 18px;
-      border-radius: 25px;
       border: 2px solid var(--green);
-      font-size: 1.1rem;
-      background: #222;
-      color: #fff;
-      font-family: var(--font-head);
-      font-weight: 600;
-      outline: none;
-      min-width: 0;
-      transition: border-color 0.3s;
-    }
-    input[type="email"]:focus {
-      border-color: #f0fff0;
-    }
-    input::placeholder {
-      color: #a6ed70cc;
-    }
-    button {
-      background: linear-gradient(99deg, #adff2f 60%, #a9fa2b 100%);
-      border: none;
-      padding: 14px 34px;
       border-radius: 25px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #181818;
-      cursor: pointer;
-      font-family: var(--font-head);
       box-shadow: 0 6px 18px #adff2f88;
-      transition: background 0.3s ease, transform 0.15s ease;
-      min-width: 130px;
-      user-select: none;
-    }
-    button:hover, button:focus {
-      background: linear-gradient(99deg, #bbff3f 70%, #c3ff4e 100%);
-      outline: none;
-      transform: scale(1.08);
+      overflow: hidden;
     }
     .privacy {
       font-size: 1.05rem;
@@ -242,18 +197,6 @@
       .feature-box {
         max-width: 90vw;
       }
-      form {
-        flex-direction: column;
-        gap: 12px;
-      }
-      button {
-        width: 100%;
-        max-width: 100%;
-      }
-      input[type="email"] {
-        width: 100%;
-        max-width: 100%;
-      }
       .contact {
         flex-direction: column;
         gap: 20px;
@@ -261,38 +204,39 @@
       .brands {
         gap: 15px;
       }
+      .email-embed-container {
+        max-width: 90vw;
+      }
     }
   </style>
 </head>
 <body>
   <div class="thank-you-banner" id="thankYouBanner">Thank you for signing up! You’ll get early access soon.</div>
-
   <div class="container">
     <img src="https://i.postimg.cc/ryxGt5xz/logo-png.png" alt="Cliome Logo" class="hero-logo" />
-
     <div class="tagline">The Future of Music, Rewarded</div>
-
     <h1 class="hero-title">PLAY MUSIC.<br />Earn Real Rewards.</h1>
-
     <p class="hero-desc">
       Welcome to Cliome—a premium music streaming startup where your listening time is valued. Skip ads freely. Get exclusive brand rewards. Help create the next big thing in music!
     </p>
-
     <img src="https://i.postimg.cc/v8JPJQLx/Screenshot-2025-08-11-114332-jpg.png" alt="Cliome App Preview" class="app-preview" />
-
     <div class="email-count">250+ music lovers have already joined!</div>
 
-    <form name="early-access" method="POST" data-netlify="true" autocomplete="on" id="signupForm">
-      <input type="hidden" name="form-name" value="early-access" />
-      <input type="email" name="email" placeholder="Your email for invite" required autocomplete="email" aria-label="Email Address" />
-      <button type="submit" aria-label="Sign Up for Early Access">Sign Up</button>
-    </form>
+    <div class="email-embed-container">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScd4TmonOfr3JK96dFQA0gYU6EA-Zq7WJdwzZZ0yGDYvDERFg/viewform?embedded=true"
+        width="100%"
+        height="520"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+      >Loading…</iframe>
+    </div>
 
     <div class="privacy">
       250+ music lovers have already joined. You'll get a personal invite before anyone else.<br />
       No spam. Privacy respected.
     </div>
-
     <div class="features">
       <div class="feature-box">
         <div class="feature-box-title">Unlimited Music</div>
@@ -307,14 +251,12 @@
         <p>No forced ads. Watch up to 5 ads every 24 hours to earn real coupons and rewards. Your music, your control.</p>
       </div>
     </div>
-
     <div class="brands">
       <img src="https://i.postimg.cc/Pxc6rHgc/starbucks-png.png" alt="Starbucks" />
       <img src="https://i.postimg.cc/K8ytGwCz/myntra-png.png" alt="Myntra" />
       <img src="https://i.postimg.cc/DZDbtMq7/pizzahut-png.jpg" alt="Pizza Hut" />
       <img src="https://i.postimg.cc/76PVxdG7/zara-png.png" alt="Zara" />
     </div>
-
     <div class="contact">
       <a href="mailto:cliomusic@gmail.com" aria-label="Email cliomusic">
         <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
@@ -326,27 +268,5 @@
       </a>
     </div>
   </div>
-
-  <script>
-    const form = document.getElementById('signupForm');
-    const thankYouBanner = document.getElementById('thankYouBanner');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();  // Prevent page reload and new tab
-
-      const formData = new FormData(form);
-
-      fetch('/', {
-        method: 'POST',
-        body: formData
-      }).then(() => {
-        thankYouBanner.style.display = 'block';
-        setTimeout(() => {
-          thankYouBanner.style.display = 'none';
-        }, 4000);
-        form.reset();
-      }).catch(() => alert('Error submitting form. Please try again.'));
-    });
-  </script>
 </body>
 </html>
