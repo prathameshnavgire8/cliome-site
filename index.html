@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>Cliome – Premium Music, Real Rewards</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -333,13 +332,20 @@
     const thankYouBanner = document.getElementById('thankYouBanner');
 
     form.addEventListener('submit', function(event) {
-      setTimeout(() => {
+      event.preventDefault();  // Prevent page reload and new tab
+
+      const formData = new FormData(form);
+
+      fetch('/', {
+        method: 'POST',
+        body: formData
+      }).then(() => {
         thankYouBanner.style.display = 'block';
         setTimeout(() => {
           thankYouBanner.style.display = 'none';
         }, 4000);
         form.reset();
-      }, 200);
+      }).catch(() => alert('Error submitting form. Please try again.'));
     });
   </script>
 </body>
